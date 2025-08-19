@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/HP/Downloads/brake-failure-mlops/${MLFLOW_TRACKING_URI}/0/cf0d04eff87048be8cde2a37135070ab/artifacts
+end_time: 1755573740623
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cf0d04eff87048be8cde2a37135070ab
+run_name: enthused-trout-280
+run_uuid: cf0d04eff87048be8cde2a37135070ab
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755573740369
+status: 3
+tags: []
+user_id: HP

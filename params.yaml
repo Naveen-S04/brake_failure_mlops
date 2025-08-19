@@ -1,0 +1,40 @@
+paths:
+  raw_data: data/raw/brake_sensor_data.csv
+  processed_data: data/processed/train.csv
+  features_train: data/processed/X_train.npy
+  features_test: data/processed/X_test.npy
+  labels_train: data/processed/y_train.npy
+  labels_test: data/processed/y_test.npy
+  model_dir: models
+  model_name: brake_failure_xgb.pkl
+  scaler_path: artifacts/scaler.pkl
+
+mlflow:
+  experiment_name: brake-failure-exp
+  tracking_uri: ${MLFLOW_TRACKING_URI}
+
+prepare:
+  test_size: 0.2
+  random_state: 42
+  stratify: true
+
+features:
+    numeric:
+    - speed
+    - vibration
+    - humidity
+
+
+model:
+  type: xgboost
+  params:
+    n_estimators: 300
+    max_depth: 6
+    learning_rate: 0.1
+    subsample: 0.9
+    colsample_bytree: 0.9
+    reg_lambda: 1.0
+
+evaluation:
+  threshold: 0.5
+  output_report: artifacts/metrics.json

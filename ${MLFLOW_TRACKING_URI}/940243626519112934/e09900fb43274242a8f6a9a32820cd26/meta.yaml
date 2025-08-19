@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/HP/Downloads/brake-failure-mlops/${MLFLOW_TRACKING_URI}/940243626519112934/e09900fb43274242a8f6a9a32820cd26/artifacts
+end_time: 1755573093940
+entry_point_name: ''
+experiment_id: '940243626519112934'
+lifecycle_stage: active
+run_id: e09900fb43274242a8f6a9a32820cd26
+run_name: merciful-cow-562
+run_uuid: e09900fb43274242a8f6a9a32820cd26
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755573093253
+status: 3
+tags: []
+user_id: HP

@@ -1,0 +1,15 @@
+{
+  "instances": [
+    {
+      "speed": 68.5,
+      "brake_pedal_pressure": 0.65,
+      "rotor_temp": 150.0,
+      "vibration": 0.12,
+      "battery_voltage": 12.3,
+      "pad_thickness": 7.4,
+      "mileage": 45321,
+      "ambient_temp": 32.0,
+      "humidity": 0.55
+    }
+  ]
+}

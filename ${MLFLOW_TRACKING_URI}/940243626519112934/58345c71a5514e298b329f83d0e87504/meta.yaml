@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/HP/Downloads/brake-failure-mlops/${MLFLOW_TRACKING_URI}/940243626519112934/58345c71a5514e298b329f83d0e87504/artifacts
+end_time: 1755573731843
+entry_point_name: ''
+experiment_id: '940243626519112934'
+lifecycle_stage: active
+run_id: 58345c71a5514e298b329f83d0e87504
+run_name: bustling-goose-69
+run_uuid: 58345c71a5514e298b329f83d0e87504
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755573731242
+status: 3
+tags: []
+user_id: HP

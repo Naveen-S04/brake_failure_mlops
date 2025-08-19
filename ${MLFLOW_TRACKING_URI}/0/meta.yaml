@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Users/HP/Downloads/brake-failure-mlops/${MLFLOW_TRACKING_URI}/0
+creation_time: 1755573092664
+experiment_id: '0'
+last_update_time: 1755573092664
+lifecycle_stage: active
+name: Default

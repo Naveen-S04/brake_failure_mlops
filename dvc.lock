@@ -1,0 +1,146 @@
+schema: '2.0'
+stages:
+  generate_data:
+    cmd: python -m src.stages.00_generate_data --params params.yaml
+    deps:
+    - path: params.yaml
+      hash: md5
+      md5: dc840357a9445c39ae59a2a517b83aa9
+      size: 803
+    - path: src/stages/00_generate_data.py
+      hash: md5
+      md5: 390553ce77abf5eac2fe35b072a346a1
+      size: 871
+    outs:
+    - path: data/raw/brake_sensor_data.csv
+      hash: md5
+      md5: 99b0390793186f8479e55e98c397ea30
+      size: 551831
+  prepare:
+    cmd: python -m src.stages.01_prepare --params params.yaml
+    deps:
+    - path: data/raw/brake_sensor_data.csv
+      hash: md5
+      md5: 99b0390793186f8479e55e98c397ea30
+      size: 551831
+    - path: params.yaml
+      hash: md5
+      md5: dc840357a9445c39ae59a2a517b83aa9
+      size: 803
+    - path: src/stages/01_prepare.py
+      hash: md5
+      md5: f0c1cb279d94922889f17ad7d7a76878
+      size: 1065
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 9a5630acbec8fb1bae302294e1817edd
+      size: 109195
+    - path: data/processed/train.csv
+      hash: md5
+      md5: dea68d6adb346a0a0093578731d8b0ab
+      size: 436654
+  features:
+    cmd: python -m src.stages.02_features --params params.yaml
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 9a5630acbec8fb1bae302294e1817edd
+      size: 109195
+    - path: data/processed/train.csv
+      hash: md5
+      md5: dea68d6adb346a0a0093578731d8b0ab
+      size: 436654
+    - path: params.yaml
+      hash: md5
+      md5: dc840357a9445c39ae59a2a517b83aa9
+      size: 803
+    - path: src/stages/02_features.py
+      hash: md5
+      md5: e75b662ee9b63a5078ae4637956602fa
+      size: 1580
+    outs:
+    - path: data/features/test_features.csv
+      hash: md5
+      md5: 178b3fd89093cdc6ab8e53b5415057be
+      size: 25861
+    - path: data/features/test_labels.csv
+      hash: md5
+      md5: 7f41a7345153541fdda99368e09a7248
+      size: 3009
+    - path: data/features/train_features.csv
+      hash: md5
+      md5: 7d7515ea4309400981c1ed4143d99078
+      size: 103477
+    - path: data/features/train_labels.csv
+      hash: md5
+      md5: e5c2192efa532e4c353897944ea4504b
+      size: 12009
+    - path: data/processed/X_test.npy
+      hash: md5
+      md5: 9862f6b49a61fffedc757c320c776539
+      size: 24128
+    - path: data/processed/X_train.npy
+      hash: md5
+      md5: 45c226dbcd00f1e723b626c11c1992fb
+      size: 96128
+    - path: data/processed/y_test.npy
+      hash: md5
+      md5: 3abfc7611f79b389ea239f9944981dd5
+      size: 8128
+    - path: data/processed/y_train.npy
+      hash: md5
+      md5: ae3d0890573d5260cbf3c4e0bdb61b2d
+      size: 32128
+  train:
+    cmd: python -m src.stages.03_train --params params.yaml
+    deps:
+    - path: data/features/train_features.csv
+      hash: md5
+      md5: 7d7515ea4309400981c1ed4143d99078
+      size: 103477
+    - path: data/features/train_labels.csv
+      hash: md5
+      md5: e5c2192efa532e4c353897944ea4504b
+      size: 12009
+    - path: params.yaml
+      hash: md5
+      md5: dc840357a9445c39ae59a2a517b83aa9
+      size: 803
+    - path: src/stages/03_train.py
+      hash: md5
+      md5: db77636776ce11c39cc4dedf832d6497
+      size: 1665
+    outs:
+    - path: models/brake_failure_xgb.pkl
+      hash: md5
+      md5: b23da92c1cca78d6a9c279f3caff0a2b
+      size: 930780
+  evaluate:
+    cmd: python -m src.stages.04_evaluate --params params.yaml
+    deps:
+    - path: data/features/test_features.csv
+      hash: md5
+      md5: 178b3fd89093cdc6ab8e53b5415057be
+      size: 25861
+    - path: data/features/test_labels.csv
+      hash: md5
+      md5: 7f41a7345153541fdda99368e09a7248
+      size: 3009
+    - path: models/brake_failure_xgb.pkl
+      hash: md5
+      md5: b23da92c1cca78d6a9c279f3caff0a2b
+      size: 930780
+    - path: params.yaml
+      hash: md5
+      md5: dc840357a9445c39ae59a2a517b83aa9
+      size: 803
+    - path: src/stages/04_evaluate.py
+      hash: md5
+      md5: 0aa1d1f8f63f2c0944208222de2429b2
+      size: 1558
+    outs:
+    - path: artifacts/metrics.json
+      hash: md5
+      md5: 1622cd07e8b887f54b6774ea932f3b7e
+      size: 132
